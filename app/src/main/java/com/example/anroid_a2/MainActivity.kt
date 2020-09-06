@@ -1,9 +1,9 @@
 package com.example.anroid_a2
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.anroid_a2.ui.main.MainFragment
 import com.example.anroid_a2.viewModel.MainViewModel
@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
-                    .commitNow()
+                .replace(R.id.container, MainFragment.newInstance())
+                .commitNow()
         }
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         viewModel.getViewState().observe(this, { value ->
