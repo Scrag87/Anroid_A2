@@ -1,17 +1,10 @@
 package com.example.anroid_a2
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.anroid_a2.ui.main.MainFragment
-import com.example.anroid_a2.viewModel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
-
-
-    lateinit var viewModel: MainViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,13 +14,5 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.container, MainFragment.newInstance())
                 .commitNow()
         }
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.getViewState().observe(this, { value ->
-            Toast.makeText(this, value, Toast.LENGTH_SHORT).show()
-        })
-    }
-
-    fun buttonClick(view: View) {
-        viewModel.buttonClick()
     }
 }

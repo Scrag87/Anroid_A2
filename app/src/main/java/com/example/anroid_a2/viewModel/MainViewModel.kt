@@ -3,24 +3,16 @@ package com.example.anroid_a2.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.anroid_a2.model.Model
+import com.example.anroid_a2.model.NoteRepository
+import com.example.anroid_a2.ui.main.MainViewState
 
 class MainViewModel : ViewModel() {
-    private val viewStateLiveData = MutableLiveData<String>()
-    private val viewStateLiveData1 = MutableLiveData<Int>()
-    private val model = Model()
+    private val viewStateLiveData = MutableLiveData<MainViewState>()
 
     init {
-        model.counterLiveData().observeForever {
-            viewStateLiveData.value = "Hello! $it"
-
-        }
-        viewStateLiveData1.value = 0
+        viewStateLiveData.value = MainViewState(NoteRepository.getNotes())
     }
 
-    fun getViewState(): LiveData<String> = viewStateLiveData
+    fun getViewState(): LiveData<MainViewState> = viewStateLiveData
 
-    fun buttonClick() {
-        model.riseCounter()
-    }
 }
